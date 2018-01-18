@@ -2,8 +2,10 @@ import pandas as pd
 import os
 import glob
 import config
+import zipfile
+
 def scan_folder(loc):
-    extension = ['csv', 'xls', 'xlsx']
+    extension = ['csv', 'xls', 'xlsx', 'zip']
     allFiles = {ext: []for ext in extension}
     for path, dirs, files in os.walk(loc):
         for f in files:
@@ -24,7 +26,7 @@ def find_header(df):
             return df
         else:
             pass
-    print("No matched header")
+    return False
 
 
 def transform_date(df):
